@@ -1,0 +1,89 @@
+
+Guía rápida para empezar con LaTeX
+----------------------------------
+
+1. Entendé la estructura básica:
+   Un documento típico tiene esta estructura:
+
+   \documentclass{article}  % o beamer para presentaciones
+   \usepackage{paquetes}    % agregás paquetes que te dan funciones extra
+
+   \begin{document}
+
+   Contenido del documento.
+
+   \end{document}
+
+2. Aprendé lo esencial primero
+
+   ✏️ Texto y formato:
+   - Negrita: \textbf{texto}
+   - Cursiva: \textit{texto}
+   - Subrayado: \underline{texto}
+   - Listas: itemize, enumerate
+
+   📐 Matemáticas:
+   - $...$ para expresiones en línea, \[...\] para ecuaciones grandes
+   - Ejemplo: $x^2 + y^2 = z^2$
+   - Fracciones: \frac{a}{b}, raíces: \sqrt{}
+
+   📑 Secciones:
+   \section{Título}
+   \subsection{Subtítulo}
+   \subsubsection{Subsubtítulo}
+
+   📦 Paquetes útiles:
+   - \usepackage[utf8]{inputenc} → para que reconozca tildes
+   - \usepackage[spanish]{babel} → para usar español
+   - \usepackage{amsmath} → para fórmulas matemáticas
+   - \usepackage{graphicx} → para insertar imágenes
+   - \usepackage{listings} → para código
+
+3. Te recomiendo tener a mano una plantilla base (Overleaf):
+
+   \documentclass[12pt]{article}
+
+   \usepackage[utf8]{inputenc}
+   \usepackage[spanish]{babel}
+   \usepackage{amsmath, amssymb}
+   \usepackage{graphicx}
+   \usepackage{listings}
+   \usepackage{hyperref}
+   \usepackage{geometry}
+
+   \geometry{margin=2.5cm}
+
+   \title{Título del trabajo}
+   \author{Tu nombre}
+   \date{\today}
+
+   \begin{document}
+
+   \maketitle
+
+   \section{Introducción}
+   Hola, este es mi primer documento en \LaTeX.
+
+   \section{Ejemplo de ecuación}
+   \[
+       E = mc^2
+   \]
+
+   \section{Código}
+   \begin{lstlisting}[language=C]
+   #include <stdio.h>
+
+   int main() {
+       printf("Hola mundo\n");
+       return 0;
+   }
+   \end{lstlisting}
+
+   \end{document}
+
+4. ¿Qué seguir aprendiendo?
+   - Artículos e informes
+   - Presentaciones con beamer
+   - Bibliografías y citas con biblatex
+   - Escritura matemática más avanzada
+   - Tablas e imágenes con buen formato
