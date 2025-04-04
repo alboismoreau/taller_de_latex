@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+% --------------------------------------------------
+% Paquetes para idioma y codificación
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}       % Permite usar acentos directamente
+\usepackage[spanish]{babel}       % Traduce elementos automáticos al español
+
+% --------------------------------------------------
+% Márgenes de página
+% --------------------------------------------------
+\usepackage[margin=2.5cm]{geometry}   % Define márgenes de todo el documento
+
+% --------------------------------------------------
+% Paquetes para matemáticas y lógica
+% --------------------------------------------------
+\usepackage{amsmath, amssymb}     % Simbología matemática
+\usepackage{mathtools}            % Extiende amsmath
+
+% --------------------------------------------------
+% Paquetes para código fuente
+% --------------------------------------------------
+\usepackage{listings}             % Para insertar código
+\usepackage{xcolor}               % Para colorear sintaxis del código
+
+% --------------------------------------------------
+% Hipervínculos
+% --------------------------------------------------
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref} % Enlaces clicables
+
+% --------------------------------------------------
+% Datos del documento
+% --------------------------------------------------
+\title{Trabajo Práctico \#1\\\large Algoritmos y Estructuras de Datos}
+\author{Nombre del estudiante}
+\date{\today}
+
+% --------------------------------------------------
+% Configuración listings para mostrar código Java
+% --------------------------------------------------
+\lstdefinelanguage{JavaCustom}{
+  language=Java,
+  morekeywords={assert,requires,ensures,modifies},  % Palabras clave extra si se usan en especificaciones
+  keywordstyle=\color{blue},                         % Color de palabras clave
+  commentstyle=\color{gray},                         % Color de comentarios
+  stringstyle=\color{red},                           % Color de cadenas
+  basicstyle=\ttfamily\small,                       % Fuente tipo máquina de escribir
+  numbers=left,                                       % Números de línea a la izquierda
+  numberstyle=\tiny\color{gray},                    % Estilo de los números
+  stepnumber=1,                                       % Mostrar cada línea
+  numbersep=5pt,                                      % Separación entre código y número
+  showstringspaces=false,                            % No marcar espacios en strings
+  tabsize=2,                                          % Tamaño del tabulador
+  breaklines=true                                    % Permitir saltos de línea automáticos
+}
+
+\lstset{language=JavaCustom} % Aplicar configuración a todos los listings
+
+% --------------------------------------------------
+% Comandos útiles para especificaciones formales
+% --------------------------------------------------
+\newcommand{\Pre}[1]{\textbf{Pre:}~#1}       % Precondición
+\newcommand{\Post}[1]{\textbf{Post:}~#1}     % Postcondición
+\newcommand{\Inv}[1]{\textbf{Inv:}~#1}       % Invariante de bucle (si aplica)
+\newcommand{\Func}[2]{\textbf{Función auxiliar}~#1:~#2}  % Definición de función auxiliar
+
+\begin{document}
+
+\maketitle
+
+\section{Enunciado}
+Escribir un procedimiento que calcule el máximo común divisor de dos enteros positivos, usando el algoritmo de Euclides.
+
+\section{Especificación}
+
+% Explicamos qué queremos que haga el procedimiento usando lógica
+
+Sean $a, b \in \mathbb{Z}^{+}$. Queremos especificar el procedimiento:
+
+\begin{itemize}
+  \item \Pre{$a > 0 \land b > 0$}  % Condición de entrada: ambos números deben ser positivos
+  \item \Post{El resultado es $mcd(a, b)$ tal que $\forall d \in \mathbb{Z}^{+}, d \mid a \land d \mid b \Rightarrow d \mid \text{resultado}$}  % Condición de salida: el resultado es un divisor común máximo
+\end{itemize}
+
+% Ejemplo de función auxiliar declarada de forma formal
+\Func{esDivisorComún}{\forall d: d \mid a \land d \mid b \Rightarrow d \mid x}
+
+\section{Desarrollo}
+
+% Breve explicación del algoritmo usado
+
+Usamos el algoritmo de Euclides que consiste en aplicar divisiones sucesivas:
+
+\begin{itemize}
+  \item Mientras $b \neq 0$, asignar $a \leftarrow b$ y $b \leftarrow a \bmod b$
+  \item Cuando $b = 0$, el MCD es $a$
+\end{itemize}
+
+\section{Código Java}
+
+% Código Java correspondiente a lo descrito
+
+\begin{lstlisting}
+public class MCD {
+
+    public static int mcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+}
+\end{lstlisting}
+
+\end{document}

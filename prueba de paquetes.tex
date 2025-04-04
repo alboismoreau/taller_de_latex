@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{algpseudocode}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{algorithm}
+
+\begin{document}
+Un escenario común, es el querer incluir código en nuestro documento. Por ejemplo:
+
+\begin{lstlisting}[language=c]
+int sumar(int x, int y) {
+return x + y;
+}
+\end{lstlisting}
+Y para ello utilizamos el paquete \emph{listings}
+
+\begin{figure}[h]
+\centering
+\includegraphics
+{../images/lion.png}
+\caption{Imagen de un leon}
+\end{figure}
+
+
+Por último, queremos poder tomar un paso atrás y escribir en abstracto un pesudocógido, más allá del lenguaje en el que lo implementemos.
+Para ello, podemos utilizar el paquete \emph{algpseudocode} con el entorno \emph{algorithmic}. Y dentro del mismo, incorporamos el pseudocódigo de
+nuestro programa.
+Por ejemplo, si queremos escribir un condicional if -else, usamos
+
+\begin{algorithmic}
+\If{a}
+   \State b
+\Else
+    \State c
+\EndIf
+\end{algorithmic}
+
+
+O si queremos un ciclo de iteración
+condicional for, usamos:
+
+\begin{algorithmic}
+\For{i e 1, . . . , n}
+\State a ← a + i
+\EndFor
+\end{algorithmic}
+
+
+Acá va un ejercicio del taller de latex
+\begin{algorithm}
+\caption{SUMARTUPLAS}
+
+\begin{algorithmic}
+    \Function{sumarTuplas}{tuplas}
+        \State $suma \gets (0,0)$
+        \If{$tuplas \neq \{\}$}
+            \For{$i = 1$ to $|tuplas|$}
+                \State $suma_1 \gets tuplas[i]_1$
+                \State $suma_2 \gets tuplas[i]_2$
+            \EndFor
+        \EndIf
+        \State \Return $suma$
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\end{document}
+
+
+
+
